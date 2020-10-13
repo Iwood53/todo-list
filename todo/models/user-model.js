@@ -18,6 +18,4 @@ UserDetal.methods.getOwnedLists = (callback) => {
 
 UserDetal.plugin(passportLocalMongoose);
 
-
-
 module.exports = mongoose.model('userinfo', UserDetal, 'userInfo');

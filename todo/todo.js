@@ -32,6 +32,7 @@ passport.serializeUser(userDetails.serializeUser());
 passport.deserializeUser(userDetails.deserializeUser());
 
 //database connection config
+mongoose.set('debug', true);
 mongoose.connect(process.env.DB_CONN_STRING, 
     {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('open', () => {

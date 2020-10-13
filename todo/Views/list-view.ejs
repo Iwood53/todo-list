@@ -1,0 +1,22 @@
+<% //Three objects currently passed to this view  %>
+<% // "user", "list" and "listItems" %>
+
+
+<h1>List Name: <%= list.name %></h1>
+
+<ul>
+  <% listItems.forEach((item) => { %>
+    <li><%= item.itemText %></li>
+  <% }); %>
+</ul>
+
+<form action='/new-list-item' method="POST">
+  <div>
+    <label for="listItem">List Item: </label>
+    <input type="text" id="listItem" name="listItem" required>
+    <input type="hidden" id="listId" name="listId" value=<%= list.id %> >    
+  </div>
+  <button type="submit">Create New List Item</button>
+</form>
+
+<a href="/">Home</a>
