@@ -16,6 +16,7 @@ var expressSession = require('express-session')({
 var app = express();
 
 //middleware config
+app.use(express.static('./public'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSession);
