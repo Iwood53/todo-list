@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var express = require('express');
 var passport = require('passport');
 var todoController = require('./controllers/todo-controller');
@@ -30,13 +32,14 @@ passport.serializeUser(userDetails.serializeUser());
 passport.deserializeUser(userDetails.deserializeUser());
 
 //database connection config
-mongoose.connect('mongodb+srv://ekin:LampClip1@cluster0.6u4ed.mongodb.net/ntdb?retryWrites=true&w=majority', 
+//'mongodb+srv://ekin:LampClip1@cluster0.6u4ed.mongodb.net/ntdb?retryWrites=true&w=majority'
+mongoose.connect(process.env.DB_CONN_STRING, 
     {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('open', () => {
     console.log('connected to DB');
 });
 
 //launch server, listen on port 9000
-app.listen(9000, () => {
-    console.log('server listening on port 9000');
+app.listen(process.env.SERVER_PORT, () => {
+    console.log('server listening on port: ' + process.env.SERVER_PORT);
 });
