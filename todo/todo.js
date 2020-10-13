@@ -32,7 +32,6 @@ passport.serializeUser(userDetails.serializeUser());
 passport.deserializeUser(userDetails.deserializeUser());
 
 //database connection config
-//'mongodb+srv://ekin:LampClip1@cluster0.6u4ed.mongodb.net/ntdb?retryWrites=true&w=majority'
 mongoose.connect(process.env.DB_CONN_STRING, 
     {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('open', () => {
