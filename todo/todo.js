@@ -33,6 +33,7 @@ passport.serializeUser(userDetails.serializeUser());
 passport.deserializeUser(userDetails.deserializeUser());
 
 //database connection config
+//set connection string in .env 'DB_CONN_STRING'
 mongoose.set('debug', true);
 mongoose.connect(process.env.DB_CONN_STRING, 
     {useNewUrlParser: true, useUnifiedTopology: true});
@@ -40,7 +41,7 @@ mongoose.connection.on('open', () => {
     console.log('connected to DB');
 });
 
-//launch server, listen on port 9000
+//launch server, listen on port set in .env 'SERVER_PORT'
 app.listen(process.env.SERVER_PORT, () => {
     console.log('server listening on port: ' + process.env.SERVER_PORT);
 });
