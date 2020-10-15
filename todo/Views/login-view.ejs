@@ -1,13 +1,22 @@
-<h1>Login</h1>
-<form action="/login" method="POST">
-    <div>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+<%- include('template-head.ejs') %> 
+
+<link rel="stylesheet" href="/css/custom-login-reg.css">
+
+
+<div class="grandParentContaniner">
+    <div class="parentContainer">
+        <legend>Login</legend>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label class="col-form-label" for="username">Username</label>
+                <input type="text" class="form-control" placeholder="username" id="inputDefault" name="username">
+            </div>
+            <div class="form-group">
+                <label class="col-form-label" for="password">Password</label>
+                <input type="password" class="form-control" placeholder="password" id="inputDefault" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button> 
+            <a href="/register" class="btn btn-primary">Register</a>
+        </form>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Login</button>   
-</form>
-<a href="/register">Register</a>
+</div>

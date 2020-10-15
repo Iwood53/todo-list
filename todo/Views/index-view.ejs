@@ -1,22 +1,46 @@
 <% //Two objects currently passed to this view  %>
 <% // "user" and "list" %>
 
+<%- include('template-head.ejs') %> 
 
-<H1>List that belong to: <%= user.username %></H1>
+<div class="grandParentContaniner">
+  <div class="parentContainer">
 
-<ul>
-  <% lists.forEach((list) => { %>
-    <li>
-      <a href=<%= '/list/' + list.id %>><%= list.name %></a>
-    </li> 
-  <% }); %>
-</ul>
-
-<h1>Create new list</h1>
-<form action='/new-list' method="POST">
-    <div>
-        <label for="listname">List Name:</label>
-        <input type="text" id="listName" name="listName" required>
+    <div class="card-group">
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+      <div class="card-body">
+        <h4 class="card-title">List that you own</h4>
+        <div class="list-group">
+          <% lists.forEach((list) => { %>
+            <a href=<%= '/list/' + list.id %> class="list-group-item d-flex justify-content-between align-items-center"><%= list.name %></a>
+          <% }); %>
+        </div>
+      </div>
     </div>
-    <button type="submit">Create New List</button>
-</form>
+
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+      <div class="card-body">
+        <h4 class="card-title">List that you're a part of</h4>
+        <div class="list-group">
+          <% lists.forEach((list) => { %>
+            <a href=<%= '/list/' + list.id %> class="list-group-item d-flex justify-content-between align-items-center"><%= list.name %></a>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="card border-primary mb-3" >
+      <div class="card-body">
+        <h4 class="card-title">Start a new list</h4>
+        <form action='/new-list' method="POST">
+          <div class="form-group row">
+              <label for="listname" class="col-form-label">List Name:</label>
+              <input type="text" placeholder="my new list" id="listName" name="listName" class="form-control"required>
+          </div>
+          <button type="submit">Create New List</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
