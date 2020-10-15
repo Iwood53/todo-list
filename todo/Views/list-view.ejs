@@ -1,22 +1,62 @@
 <% //Three objects currently passed to this view  %>
 <% // "user", "list" and "listItems" %>
 
+<%- include('template-head.ejs') %> 
 
-<h1>List Name: <%= list.name %></h1>
 
-<ul>
-  <% listItems.forEach((item) => { %>
-    <li><%= item.itemText %></li>
-  <% }); %>
-</ul>
 
-<form action='/new-list-item' method="POST">
-  <div>
-    <label for="listItem">List Item: </label>
-    <input type="text" id="listItem" name="listItem" required>
-    <input type="hidden" id="listId" name="listId" value=<%= list.id %> >    
-  </div>
-  <button type="submit">Create New List Item</button>
-</form>
+<div class="grandParentContaniner">
+  <div class="parentContainer">
 
-<a href="/">Home</a>
+    <h1><%= list.name %></h1>
+
+    <ul class="list-group">
+      <% listItems.forEach((item) => { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= item.itemText %>
+          <button class="btn btn-primary">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+              <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+            </svg>
+        </button>
+        </li>
+      <% }); %>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter new list item here">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="button-addon2">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </li>
+      
+      <form action='/new-list-item' method="POST">
+      <div class="row with-margin">
+        <div class="col-lg-12">
+        <div class="input-group ">
+          <input type="text" class="form-control input-lg" id="listItem" placeholder="Enter your new list item here" name="listItem" required>
+          <input type="hidden" id="listId" name="listId" value=<%= list.id %> >
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+              </svg>
+            </button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    </form>
+</div>
+</div>
+
+
+
+
+
