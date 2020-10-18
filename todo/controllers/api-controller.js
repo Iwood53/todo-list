@@ -27,6 +27,9 @@ module.exports = (app) => {
         });
     })
 
+    
+    //query string to include 'listId' and 'itemText
+    //JSON is the list-item-model that was just created
     app.post('/api/new-list-item', (req, res) => {
         var newListItem = new listItem({listId: req.query.listId, itemText: req.query.itemText});
         newListItem.save((err, ListItem) => {
@@ -34,8 +37,7 @@ module.exports = (app) => {
             res.json(ListItem);
         })
     })
-
-    
+   
     //query string to include 'listId'
     //JSON is a list of list-item-model that match the given todo-list-model id
     app.get('/api/get-list-by-id', (req,res) => {       
