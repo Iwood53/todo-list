@@ -3,6 +3,7 @@ require('dotenv').config()
 var express = require('express');
 var passport = require('passport');
 var todoController = require('./controllers/todo-controller');
+var apiController = require('./controllers/api-controller');
 var bodyParser = require('body-parser');
 var userDetails = require('./models/user-model')
 const mongoose = require('mongoose');
@@ -26,6 +27,7 @@ app.set('view engine', 'ejs');
 
 //controller config
 todoController(app);
+apiController(app);
 
 //passport-local-mongoose config
 passport.use(userDetails.createStrategy());
