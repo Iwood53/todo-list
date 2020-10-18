@@ -8,7 +8,10 @@ const url = require('url');
 
 module.exports = (app) => {
 
-    //
+
+    //api route for creating a new list
+    //input query string to include 'listName'
+    // respone JSON to include 'id', 'owner', 'sharedWith', 'listName'
     app.post('/api/new-list', (req, res) => {        
         console.log(req.query.listName);
         var newList = new todoLists({owner: "testOwner", name: req.query.listName});
